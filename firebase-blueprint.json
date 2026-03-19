@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user-specific settings and basic info.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A single message in a chat session.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "sentiment": { "type": "number", "description": "Sentiment score from -1 to 1" },
+        "stressors": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["userId", "role", "content", "timestamp"]
+    },
+    "DailySentiment": {
+      "title": "Daily Sentiment Summary",
+      "description": "Aggregated sentiment for a specific day.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "averageSentiment": { "type": "number" },
+        "topStressors": { "type": "array", "items": { "type": "string" } },
+        "messageCount": { "type": "integer" }
+      },
+      "required": ["userId", "date", "averageSentiment"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Individual chat messages for a user"
+    },
+    "/users/{userId}/dailyStats/{date}": {
+      "schema": "DailySentiment",
+      "description": "Daily sentiment and stressor aggregation"
+    }
+  }
+}
