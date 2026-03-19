@@ -27,7 +27,7 @@ export async function getCounselorResponse(message: string, history: { role: str
   `;
 
   try {
-    const apiKey = (import.meta as any).env.VITE_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY;
+    const apiKey = (import.meta as any).env.VITE_OPENROUTER_API_KEY;
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
