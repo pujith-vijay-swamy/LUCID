@@ -140,7 +140,7 @@ const GlassCard = ({ children, className, delay = 0, theme = 'dark' }: { childre
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
     className={cn(
-      "backdrop-blur-3xl border rounded-[2rem] sm:rounded-[40px] shadow-2xl transition-all duration-500",
+      "backdrop-blur-3xl border rounded-xl xs:rounded-2xl sm:rounded-[40px] shadow-2xl transition-all duration-500 w-full",
       theme === 'dark' 
         ? "bg-white/10 border-white/20 shadow-black/40" 
         : "bg-white/50 border-white/40 shadow-slate-200/50",
@@ -335,9 +335,9 @@ const GamesView = ({ theme }: { theme: 'dark' | 'light' }) => {
   const [activeGame, setActiveGame] = useState<'none' | 'breathing' | 'bubbles' | 'grid'>('none');
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8">
-      <GlassCard theme={theme} className="p-6 sm:p-10 flex flex-col min-h-[500px] overflow-y-auto">
-          <div className="flex items-center justify-between mb-8">
+    <div className="w-full max-w-2xl xs:max-w-3xl sm:max-w-4xl mx-auto space-y-3 xs:space-y-6 sm:space-y-8">
+      <GlassCard theme={theme} className="p-3 xs:p-6 sm:p-10 flex flex-col min-h-[400px] xs:min-h-[500px] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4 xs:mb-8">
             <div>
               <h3 className="text-xl sm:text-2xl font-bold">Stress Relief Games</h3>
               <p className="text-sm opacity-40 mt-1">Take a moment to breathe and reset</p>
@@ -348,11 +348,11 @@ const GamesView = ({ theme }: { theme: 'dark' | 'light' }) => {
           </div>
 
           {activeGame === 'none' ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-2 xs:gap-4 lg:gap-6">
               <button
                 onClick={() => setActiveGame('breathing')}
                 className={cn(
-                  "flex flex-col gap-4 p-8 border rounded-[32px] transition-all text-left group",
+                  "flex flex-col gap-2 xs:gap-4 p-4 xs:p-8 border rounded-2xl xs:rounded-[32px] transition-all text-left group min-h-[120px] xs:min-h-[180px] touch-manipulation",
                   theme === 'dark' ? "bg-white/5 hover:bg-white/10 border-white/10" : "bg-white/40 hover:bg-white/60 border-white/60"
                 )}
               >
@@ -371,7 +371,7 @@ const GamesView = ({ theme }: { theme: 'dark' | 'light' }) => {
               <button
                 onClick={() => setActiveGame('bubbles')}
                 className={cn(
-                  "flex flex-col gap-4 p-8 border rounded-[32px] transition-all text-left group",
+                  "flex flex-col gap-2 xs:gap-4 p-4 xs:p-8 border rounded-2xl xs:rounded-[32px] transition-all text-left group min-h-[120px] xs:min-h-[180px] touch-manipulation",
                   theme === 'dark' ? "bg-white/5 hover:bg-white/10 border-white/10" : "bg-white/40 hover:bg-white/60 border-white/60"
                 )}
               >
@@ -390,7 +390,7 @@ const GamesView = ({ theme }: { theme: 'dark' | 'light' }) => {
               <button
                 onClick={() => setActiveGame('grid')}
                 className={cn(
-                  "flex flex-col gap-4 p-8 border rounded-[32px] transition-all text-left group",
+                  "flex flex-col gap-2 xs:gap-4 p-4 xs:p-8 border rounded-2xl xs:rounded-[32px] transition-all text-left group min-h-[120px] xs:min-h-[180px] touch-manipulation",
                   theme === 'dark' ? "bg-white/5 hover:bg-white/10 border-white/10" : "bg-white/40 hover:bg-white/60 border-white/60"
                 )}
               >
@@ -840,29 +840,29 @@ export default function App() {
       <CrisisModal isOpen={isCrisisOpen} onClose={() => setIsCrisisOpen(false)} theme={theme} />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 p-4 sm:p-6">
+      <nav className="fixed top-0 left-0 right-0 z-40 p-2 xs:p-3 sm:p-6">
         <div className={cn(
-          "max-w-6xl mx-auto flex items-center justify-between backdrop-blur-3xl border rounded-2xl sm:rounded-3xl px-4 sm:px-8 py-3 sm:py-4 shadow-2xl transition-all duration-500",
+          "max-w-6xl mx-auto flex items-center justify-between backdrop-blur-3xl border rounded-xl xs:rounded-2xl sm:rounded-3xl px-2 xs:px-4 sm:px-8 py-2 xs:py-3 sm:py-4 shadow-2xl transition-all duration-500",
           theme === 'dark' ? "bg-white/5 border-white/10" : "bg-white/40 border-black/5"
         )}>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 xs:gap-2 sm:gap-3">
             <div className={cn(
-              "w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center border transition-all",
+              "w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-md xs:rounded-lg sm:rounded-xl flex items-center justify-center border transition-all",
               theme === 'dark' ? "bg-white/5 border-white/10" : "bg-emerald-400/10 border-emerald-400/20"
             )}>
               <LucidLogo size={24} theme={theme} />
             </div>
-            <span className="text-lg sm:text-xl font-light tracking-[0.3em] hidden sm:block">LUCID</span>
+            <span className="text-base xs:text-lg sm:text-xl font-light tracking-[0.3em] hidden xs:block">LUCID</span>
           </div>
           
           <div className={cn(
-            "flex items-center gap-1 sm:gap-2 p-1 rounded-xl sm:rounded-2xl border transition-all",
+            "flex items-center gap-0.5 xs:gap-1 sm:gap-2 p-0.5 xs:p-1 rounded-lg xs:rounded-xl sm:rounded-2xl border transition-all",
             theme === 'dark' ? "bg-black/20 border-white/5" : "bg-white/50 border-black/5"
           )}>
             <button
               onClick={() => setActiveTab('chat')}
               className={cn(
-                "px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2",
+                "px-2 xs:px-3 sm:px-6 py-1 xs:py-1.5 sm:py-2 rounded-md xs:rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-1 xs:gap-2",
                 activeTab === 'chat' 
                   ? (theme === 'dark' ? "bg-white/10 text-white shadow-lg" : "bg-black/10 text-black shadow-lg")
                   : (theme === 'dark' ? "text-white/40 hover:text-white/60" : "text-black/40 hover:text-black/60")
@@ -874,7 +874,7 @@ export default function App() {
             <button
               onClick={() => setActiveTab('dashboard')}
               className={cn(
-                "px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2",
+                "px-2 xs:px-3 sm:px-6 py-1 xs:py-1.5 sm:py-2 rounded-md xs:rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-1 xs:gap-2",
                 activeTab === 'dashboard'
                   ? (theme === 'dark' ? "bg-white/10 text-white shadow-lg" : "bg-black/10 text-black shadow-lg")
                   : (theme === 'dark' ? "text-white/40 hover:text-white/60" : "text-black/40 hover:text-black/60")
@@ -886,7 +886,7 @@ export default function App() {
             <button
               onClick={() => setActiveTab('games')}
               className={cn(
-                "px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2",
+                "px-2 xs:px-3 sm:px-6 py-1 xs:py-1.5 sm:py-2 rounded-md xs:rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-1 xs:gap-2",
                 activeTab === 'games'
                   ? (theme === 'dark' ? "bg-white/10 text-white shadow-lg" : "bg-black/10 text-black shadow-lg")
                   : (theme === 'dark' ? "text-white/40 hover:text-white/60" : "text-black/40 hover:text-black/60")
@@ -908,7 +908,7 @@ export default function App() {
             <button
               onClick={() => setActiveTab('settings')}
               className={cn(
-                "p-2 sm:p-3 border rounded-lg sm:rounded-xl transition-all",
+                "p-1.5 xs:p-2 sm:p-3 border rounded-md xs:rounded-lg sm:rounded-xl transition-all",
                 activeTab === 'settings'
                   ? (theme === 'dark' ? "bg-emerald-400/20 border-emerald-400/40 text-emerald-400" : "bg-emerald-400/10 border-emerald-400/20 text-emerald-600")
                   : (theme === 'dark' 
@@ -922,7 +922,7 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="w-full max-w-6xl mx-auto pt-24 sm:pt-36 pb-6 sm:pb-8 px-3 sm:px-6 h-[100dvh] flex flex-col overflow-hidden">
+      <main className="w-full max-w-6xl mx-auto pt-20 sm:pt-36 pb-4 sm:pb-8 px-1.5 xs:px-2 sm:px-6 h-[100dvh] flex flex-col overflow-hidden min-h-[100svh]">
         <AnimatePresence mode="wait">
           {activeTab === 'chat' ? (
             <motion.div
@@ -933,12 +933,12 @@ export default function App() {
               className="w-full flex-1 flex flex-col min-h-0 gap-3 sm:gap-6"
             >
               <div className={cn(
-                "flex-1 backdrop-blur-2xl border rounded-[2rem] sm:rounded-[40px] p-4 sm:p-8 flex flex-col shadow-2xl min-h-0 relative transition-all duration-500",
+                "flex-1 backdrop-blur-2xl border rounded-2xl xs:rounded-3xl sm:rounded-[40px] p-2 xs:p-3 sm:p-8 flex flex-col shadow-2xl min-h-0 relative transition-all duration-500",
                 theme === 'dark' ? "bg-white/5 border-white/10" : "bg-black/5 border-black/10"
               )}>
-                <div className="flex-1 overflow-y-auto pr-1 sm:pr-4 space-y-5 sm:space-y-8">
+                <div className="flex-1 overflow-y-auto pr-0.5 xs:pr-2 sm:pr-4 space-y-3 xs:space-y-5 sm:space-y-8">
                   {messages.length === 0 && (
-                    <div className="h-full flex flex-col items-center justify-center text-center max-w-md mx-auto space-y-4 sm:space-y-6 px-4">
+                    <div className="h-full flex flex-col items-center justify-center text-center max-w-xs xs:max-w-md mx-auto space-y-3 xs:space-y-4 sm:space-y-6 px-2 xs:px-4">
                       <div className="w-14 h-14 sm:w-20 sm:h-20 bg-emerald-400/10 rounded-full flex items-center justify-center animate-bounce">
                         <Heart className="text-emerald-400 w-6 h-6 sm:w-8 sm:h-8" />
                       </div>
@@ -967,7 +967,7 @@ export default function App() {
                         {msg.role === 'user' ? <UserIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" /> : <LucidLogo size={20} theme={theme} />}
                       </div>
                       <div className={cn(
-                        "max-w-[90%] sm:max-w-[80%] p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl leading-relaxed text-sm backdrop-blur-2xl shadow-xl transition-all duration-300",
+                        "max-w-[95vw] xs:max-w-[90%] sm:max-w-[80%] p-2 xs:p-3.5 sm:p-6 rounded-xl xs:rounded-2xl sm:rounded-3xl leading-relaxed text-xs xs:text-sm backdrop-blur-2xl shadow-xl transition-all duration-300",
                         msg.role === 'user' 
                           ? "bg-blue-500/30 border border-blue-500/40 text-white shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)] rounded-tr-none" 
                           : (theme === 'dark' 
@@ -1035,21 +1035,21 @@ export default function App() {
                   <div ref={scrollRef} />
                 </div>
 
-                <form onSubmit={handleSendMessage} className="mt-3 sm:mt-8 relative">
+                <form onSubmit={handleSendMessage} className="mt-2 xs:mt-3 sm:mt-8 relative">
                   <input
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     placeholder="Tell me what's on your mind..."
                     className={cn(
-                      "w-full border rounded-xl sm:rounded-2xl px-4 sm:px-8 py-3.5 sm:py-5 pr-14 sm:pr-20 focus:outline-none focus:border-emerald-400/50 transition-all placeholder:opacity-20 text-sm sm:text-base",
+                      "w-full border rounded-lg xs:rounded-xl sm:rounded-2xl px-3 xs:px-4 sm:px-8 py-2.5 xs:py-3.5 sm:py-5 pr-12 xs:pr-14 sm:pr-20 focus:outline-none focus:border-emerald-400/50 transition-all placeholder:opacity-30 text-xs xs:text-sm sm:text-base",
                       theme === 'dark' ? "bg-white/5 border-white/10" : "bg-black/5 border-black/10"
                     )}
                   />
                   <button
                     type="submit"
                     disabled={!inputText.trim() || isTyping}
-                    className="absolute right-1.5 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-3 bg-emerald-400 text-[#0a0f1d] rounded-lg sm:rounded-xl hover:bg-emerald-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 p-2 xs:right-1.5 xs:p-2.5 sm:right-3 sm:p-3 bg-emerald-400 text-[#0a0f1d] rounded-md xs:rounded-lg sm:rounded-xl hover:bg-emerald-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
@@ -1062,7 +1062,7 @@ export default function App() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="w-full flex-1 overflow-y-auto px-1 sm:px-2 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 pb-8 min-h-0"
+              className="w-full flex-1 overflow-y-auto px-0.5 xs:px-1 sm:px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 xs:gap-4 sm:gap-8 pb-8 min-h-0"
             >
               {/* Mood Trend */}
               <GlassCard theme={theme} className="lg:col-span-2 p-5 sm:p-8 min-h-[320px] sm:min-h-[400px] flex flex-col">
@@ -1326,7 +1326,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="w-full flex-1 overflow-y-auto px-1 sm:px-2 pb-8 min-h-0 flex flex-col"
+              className="w-full flex-1 overflow-y-auto px-0.5 xs:px-1 sm:px-2 pb-8 min-h-0 flex flex-col"
             >
               <GamesView theme={theme} />
             </motion.div>
@@ -1336,7 +1336,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full flex-1 overflow-y-auto px-1 sm:px-2 pb-8 min-h-0 flex flex-col"
+              className="w-full flex-1 overflow-y-auto px-0.5 xs:px-1 sm:px-2 pb-8 min-h-0 flex flex-col"
             >
               <SettingsView theme={theme} setTheme={setTheme} logout={logout} user={user} />
             </motion.div>
